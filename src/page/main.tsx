@@ -6,6 +6,7 @@ import Layout from "../component/layout";
 import NFTList from "../component/NFTlist";
 import { INFTPet } from "../component/NFT/pet";
 import { GetNFTInfo } from "../GetOwner";
+import NFTImageList from "../component/NFTlist";
 
 
 const Main = () => {    
@@ -63,25 +64,34 @@ const Main = () => {
         })
     }, [ethereumAccount]);
 
+    
+    const handleBattle = () => {
+    };
+
     return (
+        
         <div>
             <Head>
                 <title>Opensea | Clone</title>
                 <link rel="icon" href="/favicon.ico" />
+                <link rel="stylesheet" href="/styles.css" type="text/css" />
             </Head>
             
             <button
-                        className="max-w-[120px] truncate  rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 py-2 px-5 text-white hover:opacity-80 sm:max-w-[200px]"
-                        onClick={handelConnect}
-                    >
-                        {ethereumAccount ? ethereumAccount : "Connect MetaMask"}
+                onClick={handleBattle}
+                style={{ position: 'fixed', top: 0, right: 0 , zIndex: 1 }}
+            >
+                Go Battle
             </button>
-            
+
+            <button
+                onClick={handelConnect}
+                style={{ position: 'fixed', top: 0, left: 0 , zIndex: 1 }}
+            >
+                {ethereumAccount ? 'Connected' : 'Connect MetaMask'}
+            </button>
         
-            <section className="relative h-[20vh] min-h-[200px] w-full bg-[url('/banner.avif')] bg-cover bg-center">
-                <div className="absolute -bottom-1/2 left-1/2 box-border h-32 w-32 -translate-x-1/2 -translate-y-1/2 rounded-md border-4 border-slate-300 bg-[url('/Collection.avif')] bg-cover sm:h-40 sm:w-40"></div>
-            </section>
-            <section>
+             <section>
                 <div className="container mx-auto">
                     <div className="py-20 text-center">
                         <h2 className="text-3xl font-bold">BattlePet</h2>
@@ -92,7 +102,7 @@ const Main = () => {
 
                         <div>
                         { 
-                            nftList.map((nftInfo) => (<img key={nftInfo.imageUrl} src={nftInfo.imageUrl} />))
+                           <NFTImageList nftList={nftList} />
                         }
                         </div>
                     </div>

@@ -1,27 +1,48 @@
-import '../App.css';
-import React, { useEffect, useState } from "react";
-import {GetNFTInfo} from "../GetOwner";
-import { INFTPet } from '../component/NFT/pet';
-import {instance, Account} from "../component/account";
-import { AppProps } from 'next/app';
- 
+import { FC, useState } from 'react';
+import NFTDetails from './NFTDetails';
 
-function NFTlist({ Component, pageProps }: AppProps) {
 
-    return (
-    <div className="App">
-        <header className="App-header">
-        <div>
-        {   
-        
-        }
-        </div>
-        <h1>damn it </h1>
-            
-        
-        </header>
-    </div>
-    );
+export interface INFTPet {
+    imageUrl: string;
+    name: string;
+    tokenId: string;
 }
- 
-export default NFTlist;
+
+interface NFTImageListProps {
+  nftList: INFTPet[];
+}
+
+const NFTImageList: FC<NFTImageListProps> = ({ nftList }) => {
+  const [selectedNFT, setSelectedNFT] = useState<INFTPet | null>(null);
+
+  const handleNFTClick = (nft: INFTPet) => {
+    setSelectedNFT(nft);
+  };
+
+  const handleGoBack = () => {
+    setSelectedNFT(null);
+  };
+
+  if (selectedNFT) {
+    return <NFTDetails nftInfo={selectedNFT} onGoBack={handleGoBack} />;
+  }
+
+  return (
+    <div>
+      <div className="nft-list">
+        {nftList.map((nftInfo) => (
+          <img
+            key={nftInfo.imageUrl}
+            src={nftInfo.imageUrl}
+            alt={nftInfo.name}
+            onClick={() => handleNFTClick(nftInfo)}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default NFTImageList;
+
+
