@@ -6,9 +6,10 @@ export interface INFTPet {
     imageUrl: string;
     name: string;
     tokenId: string;
+    balance: number;
 }
 
-const NFTPet: FC<INFTPet> = ({ imageUrl, name, tokenId }) => {
+const NFTPet: FC<INFTPet> = ({ imageUrl, name, tokenId, balance }) => {
     const [showBuyButton, setShowBuyButton] = useState(false);
 
     return (
@@ -28,6 +29,8 @@ const NFTPet: FC<INFTPet> = ({ imageUrl, name, tokenId }) => {
                         }}
                     />
                 </div>
+
+                
             </div>
         </Link>
     );

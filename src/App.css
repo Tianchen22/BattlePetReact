@@ -21,13 +21,28 @@ button:hover {
   opacity: 0.8;
 }
 
+
+button.chosen{
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+  border: none;
+  border-radius: 9999px;
+  padding: 0.5rem 1rem;
+  color: white;
+  background-image: linear-gradient(to right, #424242, #464646);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: opacity 0.2s ease-in-out;
+}
+
+
 /* Style for the section with the background image */
 section {
   position: relative;
   height: 20vh;
   min-height: 200px;
   width: 100%;
-  background-image: url('../public/banner.avif');
+  background-image: url('../public/battlepet-logo.png');
   background-size: cover;
   background-position: center;
 }
@@ -94,4 +109,33 @@ section::before {
   object-fit: cover;
   border-radius: 10px;
   cursor: pointer;
+}
+
+
+.nft-image {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.nft-image img {
+  width: 200px;
+  height: 200px;
+  height: auto;
+  object-fit: cover;
+}
+
+.nft-image span {
+  position: absolute;
+  top: 130px;
+  right: 5px;
+  padding: 5px;
+  text-align: right;
+  color: blueviolet;
+  border-radius: 50%;
+  font-size: 50px;
+  font-weight: bold;
+  font-feature-settings: "liga" off, "dlig" off, "ss01" on;
+  font-family: "Comic Sans MS", sans-serif;
 }

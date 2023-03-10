@@ -21,6 +21,7 @@ useEffect( () => {
           imageUrl: nft.media[0].thumbnail || "",
           name: nft.contract.address ? nft.contract.address.toString() : "",
           tokenId: nft.tokenId,
+          balance : 1
       }));
       setNftList(nftListViewData);
       console.log(nftList);      

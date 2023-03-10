@@ -6,6 +6,7 @@ export interface INFTPet {
     imageUrl: string;
     name: string;
     tokenId: string;
+    balance: number;
 }
 
 interface NFTImageListProps {
@@ -31,17 +32,21 @@ const NFTImageList: FC<NFTImageListProps> = ({ nftList }) => {
     <div>
       <div className="nft-list">
         {nftList.map((nftInfo) => (
-          <img
-            key={nftInfo.imageUrl}
-            src={nftInfo.imageUrl}
-            alt={nftInfo.name}
-            onClick={() => handleNFTClick(nftInfo)}
-          />
+          <div key={nftInfo.imageUrl} className = "nft-image">
+            <img
+              src={nftInfo.imageUrl}
+              alt={nftInfo.name}
+              onClick={() => handleNFTClick(nftInfo)}
+            />
+            {nftInfo.balance > 1 && (
+              <span >{nftInfo.balance}</span>
+            )}
+          </div>
         ))}
       </div>
     </div>
   );
-};
+}
 
 export default NFTImageList;
 
